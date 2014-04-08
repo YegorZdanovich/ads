@@ -3,10 +3,41 @@
 <head>
   <title>Ads</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li> <p class="navbar-text" style="font-size:20px">World of Advertisements</p></li>
+      <li class="divider-vertical"></li>
+      <li><%= link_to  "Home", root_path %></li>
+      
+      <li class="divider-vertical"></li>
+      <li><%= link_to "Name", name: "name" %></li>      
+      <li class="divider-vertical"></li>
+      <li><%= link_to "Admin", admin: "admin" %></li>
+      <li class="divider-vertical"></li>
+
+      <li><%= link_to "Log in", log_in: "log_in" %></li>
+      <li class="divider-vertical"></li>
+
+
+      <li><%= link_to "Sign up", sign_up: "sign_up" %></li>
+      <li class="divider-vertical"></li>
+
+
+      <li><%= link_to "exit", exit: "exit" %></li>
+      <li class="divider-vertical"></li>
+
+    </ul>
+  </div>
+</div>
+
 
 <%= yield %>
 
