@@ -16,24 +16,27 @@
       <li> <p class="navbar-text" style="font-size:20px">World of Advertisements</p></li>
       <li class="divider-vertical"></li>
       <li><%= link_to  "Home", root_path %></li>
+      <li class="divider-vertical"></li>
+
       
-      <li class="divider-vertical"></li>
-      <li><%= link_to "Name", name: "name" %></li>      
-      <li class="divider-vertical"></li>
-      <li><%= link_to "Admin", admin: "admin" %></li>
-      <li class="divider-vertical"></li>
+      <% if can? :manage, :all%>
+        <li><%= link_to "Admin", admin: "admin" %></li>
+        <li class="divider-vertical"></li>
+      <% end %>
 
-      <li><%= link_to "Log in", log_in: "log_in" %></li>
-      <li class="divider-vertical"></li>
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.email, name: "name" %></li>      
+        <li class="divider-vertical"></li>
+        <li><%= link_to "exit", destroy_user_session_path, method: :delete %></li>
+        <li class="divider-vertical"></li>
+      <% else %>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li class="divider-vertical"></li>
+      <% end %>
 
-
-      <li><%= link_to "Sign up", sign_up: "sign_up" %></li>
-      <li class="divider-vertical"></li>
-
-
-      <li><%= link_to "exit", exit: "exit" %></li>
-      <li class="divider-vertical"></li>
-
+      
     </ul>
   </div>
 </div>

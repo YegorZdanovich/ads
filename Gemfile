@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 
 gem "twitter-bootstrap-rails"
+gem 'devise'
+gem 'cancan'
+gem 'enumerize'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
