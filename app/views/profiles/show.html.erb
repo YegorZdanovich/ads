@@ -1,0 +1,21 @@
+<%= params %>
+
+<h3> User profile</h3>
+
+<%= form_for @profile, html: {:class => "form-horizontal"} do |f| %>
+  
+  <div class="control-group">
+    
+    <%= render partial: "first_name_form" , locals: { f: f }%>
+    <%= render partial: "second_name_form" , locals: { f: f }%>
+    <%= render partial: "age_form" , locals: { f: f }%>
+    <%= render partial: "status_form" , locals: { f: f, for_show: true }%>
+
+  </div>
+
+  <div class="form-actions">
+    <%= link_to "Edit", edit_profile_path(@profile), :class => "btn btn-primary"%>
+    <%= link_to "Back", root_path, :class => "btn"%>
+  </div>
+    
+<% end %>

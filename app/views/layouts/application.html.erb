@@ -25,7 +25,7 @@
       <% end %>
 
       <% if user_signed_in? %>
-        <li><%= link_to current_user.email, name: "name" %></li>      
+        <li><%= link_to current_user.email, profile_path(current_user.profile) %></li>      
         <li class="divider-vertical"></li>
         <li><%= link_to "exit", destroy_user_session_path, method: :delete %></li>
         <li class="divider-vertical"></li>
@@ -41,6 +41,12 @@
   </div>
 </div>
 
+<% flash.each do |name, msg|%>
+  <div class="alert alert-<%= name == :notice ? "success" : "error"%>">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= msg %>
+  </div>
+<% end %>
 
 <%= yield %>
 
