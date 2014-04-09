@@ -5,6 +5,7 @@ gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'cancan'
 gem 'enumerize'
+gem 'will_paginate', '~> 3.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

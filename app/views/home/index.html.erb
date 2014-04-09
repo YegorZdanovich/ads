@@ -1,3 +1,7 @@
 <%= link_to "New ads", new_advertisement_path, :class => "btn btn-primary" %>
 
 <%= render partial: "ads", collection: @ads%>
+
+<div class="apple_pagination">
+  <%= will_paginate @ads %>
+</div>
