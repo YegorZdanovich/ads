@@ -11,4 +11,5 @@ class Profile < ActiveRecord::Base
     User.find(self.user_id).update(role: self.role)
   end
 
+
 end

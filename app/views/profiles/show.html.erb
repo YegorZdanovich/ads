@@ -16,6 +16,12 @@
   <div class="form-actions">
     <%= link_to "Edit", edit_profile_path(@profile), :class => "btn btn-primary"%>
     <%= link_to "Back", root_path, :class => "btn"%>
+
+    <% if can? :destroy, @profile %>
+      <%= link_to "Delete user", profile_path(@profile), :class => "btn btn-danger",
+                  method: :delete, data: {confirm: "Are you sure?"}%>
+    <% end %>
+
   </div>
     
 <% end %>

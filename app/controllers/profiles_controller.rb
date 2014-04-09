@@ -23,10 +23,19 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    #delete user by deleting profile
+    @user = User.find(Profile.find(params[:id]).user_id)
+    @user.destroy    
+    flash[:error] = "User was deleted."
+    redirect_to root_path
+  end
+
   private
 
   def is_users_profile?
-    unless Profile.find_by(id: params[:id]).user_id == current_user.id
+    if cannot? :read, Profile.find_by(id: params[:id])
+      flash[:error] = "it's private profile!"
       redirect_to profile_path(current_user.profile)
     end
   end

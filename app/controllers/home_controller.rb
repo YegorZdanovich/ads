@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    @ads = Advertisement.page(params[:page]).per_page(3)
+    @ads = Advertisement.time_post_order.page(params[:page]).per_page(3)
   end
 
 end

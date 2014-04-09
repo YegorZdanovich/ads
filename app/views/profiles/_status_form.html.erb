@@ -6,7 +6,7 @@
       <%= f.check_box :role, checked: "checked", disabled: "true"%>
     <% else %>
 
-      <% if can? :manage, :all %>
+      <% if can? :update, @profile %>
         <%= f.select(:role, User.role.options( except: [:guest]))%>
       <% end %>
     

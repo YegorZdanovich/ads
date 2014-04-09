@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
 
   has_one :profile, dependent: :destroy
+  has_many :advertisements, dependent: :nullify 
 
   extend Enumerize
   enumerize :role, in: [:guest, :user, :admin], default: :guest
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
   private
 
   def set_role
-    self.role ||= :user
+    self.role = :user
   end
 
   def create_profile

@@ -6,11 +6,23 @@ class Ability
     user ||= User.new
 
     if user.role.admin?
-      can :mange,:all
+      can [:read, :update], [Advertisement, Profile]
+      can :destroy, [Profile] {|p| p.user_id != user.id}
+      can :destroy, [Advertisement]
+      
     elsif user.role.user?
-      can [:read, :create, :update], [Advirtisment, Profile]
+      
+      can :read, Profile do |p|
+        p.user_id == user.id
+      end
+
+      can [:read, :create], [Advertisement]
+      
+      can :update, [Advertisement] {|a| a.user_id == user.id}
+      #can [:read, :create, :update], [Advertisement, Profile]
+
     elsif user.role.guest?
-      can :read, :all
+      can :read, [Advertisement]
     end
           
 
