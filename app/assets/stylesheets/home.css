@@ -1,0 +1,18 @@
+.ads {
+  margin-top: 10px;
+  border: solid black 2px;
+}
+
+.ads-title {
+  width: 80%;
+}
+
+.ads-text {
+  height: 100px;
+  width: 600px;
+}
+
+.ads-contact {
+  width: 600px;
+  height: 20px;
+}

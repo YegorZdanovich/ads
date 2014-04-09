@@ -8,7 +8,7 @@ class Ability
     if user.role.admin?
       can :mange,:all
     elsif user.role.user?
-      can [:read, :write], :all
+      can [:read, :create, :update], [Advirtisment, Profile]
     elsif user.role.guest?
       can :read, :all
     end
