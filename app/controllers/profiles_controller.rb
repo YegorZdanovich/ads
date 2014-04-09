@@ -15,9 +15,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(id: params[:id])
     if @profile.update(params_for_update_profile)
 
-      @user = User.find(@profile.user_id)
-      @user.update(update_user_role)
-      
       flash[:notice] = "Everything is update"
       redirect_to @profile
     else

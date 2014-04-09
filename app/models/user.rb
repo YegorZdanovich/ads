@@ -12,12 +12,13 @@ class User < ActiveRecord::Base
 
   # set default role for signed_in users
   before_create :set_role
-  after_save :create_profile
+  after_create :create_profile
+
 
   private
 
   def set_role
-    self.role = :user
+    self.role ||= :user
   end
 
   def create_profile
