@@ -1,1 +1,5 @@
-all_ads.html.erb
+<h3>All Advertisements </h3>
+
+<h4> New Ads </h4>
+
+<%= render partial: "new_ads", collection: @adss.new_ads, as: :ads%>

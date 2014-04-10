@@ -6,7 +6,7 @@ gem 'devise'
 gem 'cancan'
 gem 'enumerize'
 gem 'will_paginate', '~> 3.0'
-
+gem 'state_machine'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

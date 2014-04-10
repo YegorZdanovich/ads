@@ -2,9 +2,9 @@
   <%= link_to "New ads", new_advertisement_path, :class => "btn btn-primary" %>
 <% end %>
 
-<%= render partial: "ads", collection: @ads%>
+<%= render partial: "ads", collection: @adss%>
 
-<% unless @ads.total_pages == 1%>
+<% unless @adss.total_pages == 1%>
   <div class="apple_pagination">
     <%= will_paginate @ads %>
   </div>

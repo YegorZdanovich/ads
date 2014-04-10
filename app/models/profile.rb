@@ -7,6 +7,7 @@ class Profile < ActiveRecord::Base
 
   private
 
+  #after updatin role in profile? update in user model
   def update_role_in_user
     User.find(self.user_id).update(role: self.role)
   end

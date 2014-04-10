@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
   end
 
   def all_ads
-     
+     @adss = Advertisement.all
   end
 
 end
