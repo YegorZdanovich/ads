@@ -1,0 +1,6 @@
+<div class="form-actions">
+  <% if can? :update, @ads %>
+    <%= f.submit "Update", :class => "btn btn-primary"%>
+  <% end %>
+  <%= link_to "go home", root_path, :class => "btn" %>
+</div>

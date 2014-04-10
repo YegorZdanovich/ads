@@ -1,1 +1,11 @@
-<%= render partial: "form" %>
+<%= form_for @ads, :html => { :class => "form-horizontal"} do |f| %>
+  
+  
+  <%= render partial: "title_form", locals: {f: f} %>
+  <%= render partial: "text_form", locals: {f: f} %>
+  <%= render partial: "contact_form", locals: {f: f} %>
+  <%= render partial: "status_form", locals: {f: f} %>
+  <%= render partial: "update_form", locals: {f: f} %>   
+
+   
+<% end %>
