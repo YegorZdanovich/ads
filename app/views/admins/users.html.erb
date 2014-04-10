@@ -1,0 +1,10 @@
+<%= params%>
+<h3> All Users </h3>
+
+<%= render partial: "users", collection: @users %>
+
+<% unless @users.total_pages == 1%>
+  <div class="apple_pagination">
+    <%= will_paginate @users %>
+  </div>
+<% end %>

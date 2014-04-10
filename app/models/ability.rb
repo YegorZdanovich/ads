@@ -9,7 +9,7 @@ class Ability
       can [:read, :update], [Advertisement, Profile]
       can :destroy, [Profile] {|p| p.user_id != user.id}
       can :destroy, [Advertisement]
-      
+      can :browse, [Advertisement, Profile]
     elsif user.role.user?
       
       can :read, Profile do |p|

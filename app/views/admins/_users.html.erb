@@ -1,0 +1,6 @@
+<div class="admin-users">
+  <p><b>Role:</b> <%= users.role%></p>
+  <p><b>Name:</b> 
+    <%= link_to "#{users.profile.first_name} #{users.profile.second_name}", profile_path(users.profile) %>
+  </p>
+</div>

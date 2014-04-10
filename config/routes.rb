@@ -6,5 +6,8 @@ Ads::Application.routes.draw do
   resources :profiles
   resources :advertisements
 
+  get "admins/users"
+  get "admins/all_ads"
+
   root "home#index"
 end
