@@ -6,7 +6,9 @@ class Ability
     user ||= User.new
 
     if user.role.admin?
-      can [:read, :update], [Advertisement, Profile]
+      can :read, [Advertisement, Profile]
+      can :update, [Profile]
+      can :update, [Advertisement] {|a| a.new?}
       can :destroy, [Profile] {|p| p.user_id != user.id}
       can :destroy, [Advertisement]
       can :browse, [Advertisement, Profile]
@@ -18,7 +20,7 @@ class Ability
 
       can [:read, :create], [Advertisement]
       
-      can :update, [Advertisement] {|a| a.user_id == user.id}
+      can :update, [Advertisement] {|a| a.user_id == user.id && a.draft?}
       #can [:read, :create, :update], [Advertisement, Profile]
 
     elsif user.role.guest?

@@ -4,8 +4,24 @@
   <%= render partial: "title_form", locals: {f: f} %>
   <%= render partial: "text_form", locals: {f: f} %>
   <%= render partial: "contact_form", locals: {f: f} %>
-  <%= render partial: "status_form", locals: {f: f} %>
-  <%= render partial: "update_form", locals: {f: f} %>   
+  <%= render partial: "status_form", locals: {f: f} %>   
+  
+  <div class="form-actions">
 
-   
+    <%= link_to "go home", root_path, :class => "btn" %>
+
+    <!-- admin can update only 'new' ads-->
+    <% if (current_user.role.admin?) && (can? :update, @ads) %>
+      <%= f. select(:status,["canceled","approved"]) %>
+      <%= f.submit "Update Status", :class => "btn btn-primary"%>
+    <% end %>
+    
+    <!-- user can update only 'draft' ads-->
+    <% if (current_user.role.user?) && (can? :update, @ads) %>
+      <%= f. select(:status, ["draft", "new"]) %>
+      <%= f.submit "Update", :class => "btn btn-primary"%>
+    <% end %>
+
+  </div>
+
 <% end %>
