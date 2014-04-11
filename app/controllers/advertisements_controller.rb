@@ -47,7 +47,7 @@ class AdvertisementsController < ApplicationController
   private
 
   def params_for_create
-    params.require(:advertisement).permit(:title, :text, :contact)
+    params.require(:advertisement).permit(:title, :text, :contact, images_attributes: [:picture])
   end
 
   def can_create?

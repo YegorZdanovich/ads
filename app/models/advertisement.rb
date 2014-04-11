@@ -1,6 +1,9 @@
 class Advertisement < ActiveRecord::Base
 
   belongs_to :user
+  has_many :images, dependent: :destroy
+
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   scope :time_post_order, -> { Advertisement.order("created_at DESC") }
   scope :draft, -> { Advertisement.with_status(:draft) }

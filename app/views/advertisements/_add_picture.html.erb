@@ -1,0 +1,7 @@
+<div class="controls">
+  <%= f.fields_for :images do |image_form| %>
+    <%= image_form.file_field :picture%>
+    <%= image_form.link_to_remove "Remove picture", :class => "btn btn-danger"%>
+  <% end %>
+  <p><%= f.link_to_add "Add picture", :images, :class => "btn"%></p>
+</div>

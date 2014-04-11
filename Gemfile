@@ -8,6 +8,8 @@ gem 'enumerize'
 gem 'will_paginate', '~> 3.0'
 gem 'state_machine'
 gem 'whenever', :require => false
+gem "nested_form"
+gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

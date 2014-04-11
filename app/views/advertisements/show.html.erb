@@ -5,7 +5,9 @@
   <%= render partial: "text_form", locals: {f: f} %>
   <%= render partial: "contact_form", locals: {f: f} %>
   <%= render partial: "status_form", locals: {f: f} %>   
+  <%= render partial: "image", collection: @ads.images %>
   
+
   <div class="form-actions">
 
     <%= link_to "go home", root_path, :class => "btn" %>
