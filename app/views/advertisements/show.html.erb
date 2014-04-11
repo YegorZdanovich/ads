@@ -22,6 +22,11 @@
       <%= f.submit "Update", :class => "btn btn-primary"%>
     <% end %>
 
+    <% if can? :destroy, Advertisement %>
+      <%= link_to "Delete advertisement", advertisement_path(@ads), :class =>"btn btn-danger",
+                  method: :delete, data: {confirm: "Are you sure?"}%>
+    <% end %>
+
   </div>
 
 <% end %>

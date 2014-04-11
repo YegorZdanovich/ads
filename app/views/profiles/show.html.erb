@@ -5,12 +5,10 @@
 <%= form_for @profile, html: {:class => "form-horizontal"} do |f| %>
   
   <div class="control-group">
-    
     <%= render partial: "first_name_form" , locals: { f: f }%>
     <%= render partial: "second_name_form" , locals: { f: f }%>
     <%= render partial: "age_form" , locals: { f: f }%>
     <%= render partial: "status_form" , locals: { f: f, for_show: true }%>
-
   </div>
 
   <div class="form-actions">
@@ -21,7 +19,28 @@
       <%= link_to "Delete user", profile_path(@profile), :class => "btn btn-danger",
                   method: :delete, data: {confirm: "Are you sure?"}%>
     <% end %>
-
   </div>
     
+  <% if current_user.role.user? && (can? :read, @profile) %> 
+    <div class="span3">
+      <h4> My Drafts :</h4>
+      <%= render partial: "ads", collection: @profile.user.advertisements.draft %>
+    </div>
+
+    <div class="span3">
+      <h4> My Approved ads :</h4>
+      <%= render partial: "ads", collection: @profile.user.advertisements.approved %>
+    </div>
+
+    <div class="span3">
+      <h4> My canceled ads :</h4>
+      <%= render partial: "ads", collection: @profile.user.advertisements.canceled %>
+    </div>
+
+    <div class="span3">
+      <h4> My archiv :</h4>
+      <%= render partial: "ads", collection: @profile.user.advertisements.archival %>
+    </div>
+  <% end %>
+
 <% end %>

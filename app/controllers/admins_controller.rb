@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
   end
 
   def all_ads
-     @adss = Advertisement.all
+     @adss = Advertisement.without_draft.page(params[:page]).per_page(20)
   end
 
 end

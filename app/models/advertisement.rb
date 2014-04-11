@@ -3,12 +3,13 @@ class Advertisement < ActiveRecord::Base
   belongs_to :user
 
   scope :time_post_order, -> { Advertisement.order("created_at DESC") }
+  scope :draft, -> { Advertisement.with_status(:draft) }
   scope :new_ads, -> { Advertisement.with_status(:new) }
   scope :canceled, -> { Advertisement.with_status(:canceled) }
   scope :approved, -> { Advertisement.with_status(:approved) }
   scope :published, -> { Advertisement.with_status(:published) }
   scope :archival, -> { Advertisement.with_status(:archival) }
-
+  scope :without_draft, -> { where.not(status: :draft)}
 
   state_machine :status, :initial => :draft do
     

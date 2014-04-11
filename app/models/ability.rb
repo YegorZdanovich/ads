@@ -20,7 +20,7 @@ class Ability
 
       can [:read, :create], [Advertisement]
       
-      can :update, [Advertisement] {|a| a.user_id == user.id && a.draft?}
+      can [:update, :destroy], [Advertisement] {|a| a.user_id == user.id && a.draft?}
       #can [:read, :create, :update], [Advertisement, Profile]
 
     elsif user.role.guest?

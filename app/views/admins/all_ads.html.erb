@@ -1,5 +1,9 @@
 <h3>All Advertisements </h3>
 
-<h4> New Ads </h4>
+<%= render partial: "ads", collection: @adss%>
 
-<%= render partial: "new_ads", collection: @adss.new_ads, as: :ads%>
+<% unless @adss.total_pages == 1%>
+  <div class="apple_pagination">
+    <%= will_paginate @users %>
+  </div>
+<% end %>
