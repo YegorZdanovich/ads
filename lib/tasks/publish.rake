@@ -18,4 +18,9 @@ namespace :status do
     end
   end
 
+  desc "canceled ads return to draft on next day"
+  task :return_canceled => :environment do
+    Advertisement.approved.each(&:to_draft)
+  end
+
 end

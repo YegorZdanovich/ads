@@ -38,7 +38,7 @@ class Advertisement < ActiveRecord::Base
     end
 
     event :to_draft do
-      transition :archival => :draft
+      transition [:canceled, :archival] => :draft
     end
   end
 
