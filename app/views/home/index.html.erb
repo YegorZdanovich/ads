@@ -4,6 +4,10 @@
 
 <%= render partial: "ads", collection: @adss%>
 
+<%= form_for @adss do |f| %>
+  
+<% end %>
+
 <% unless @adss.total_pages == 1%>
   <div class="apple_pagination">
     <%= will_paginate @adss %>

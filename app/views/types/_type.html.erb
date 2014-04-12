@@ -1,0 +1,6 @@
+<p>
+  <b>Type: </b>
+  <%= type.value %> 
+  <%= link_to "delee", type_path(type), method: :delete, 
+                date: {confirm: "Are you sure"} %>
+</p>

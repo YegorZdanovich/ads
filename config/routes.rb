@@ -1,13 +1,16 @@
 Ads::Application.routes.draw do
 
+  root "home#index"
    
   devise_for :users
   
   resources :profiles
   resources :advertisements
 
-  get "admins/users"
-  get "admins/all_ads"
+  get "admin/users", to: "admins#users"
+  get "admin/all_ads", to: "admins#all_ads"
 
-  root "home#index"
+  scope '/admin' do
+    resources :types, only: [:index, :create, :destroy]
+  end
 end

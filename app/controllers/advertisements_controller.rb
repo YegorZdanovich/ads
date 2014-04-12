@@ -12,6 +12,7 @@ class AdvertisementsController < ApplicationController
   def create
     @user = current_user
     if @ads = @user.advertisements.create(params_for_create) 
+      Type.find_by(value: param_for_type).advertisements << @ads
       flash[:notice] = "New Advertisement was creat"
       redirect_to @ads
     else
@@ -48,6 +49,10 @@ class AdvertisementsController < ApplicationController
 
   def params_for_create
     params.require(:advertisement).permit(:title, :text, :contact, images_attributes: [:picture])
+  end
+
+  def param_for_type
+    params.require(:advertisement).permit(:type)[:type]
   end
 
   def can_create?

@@ -1,5 +1,12 @@
 <%= form_for @ads, :html => { :class => "form-horizontal"} do |f| %>
   
+
+  <div class="control-group">
+    <%= f.label "Type", :class => "control-label" %>
+    <div class="controls">
+      <%= f.label @ads.type.value %>
+    </div>
+  </div>
   
   <%= render partial: "title_form", locals: {f: f} %>
   <%= render partial: "text_form", locals: {f: f} %>
