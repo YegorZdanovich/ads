@@ -1,7 +1,14 @@
 class HomeController < ApplicationController
   
   def index
-    @adss = Advertisement.published.time_post_order.page(params[:page]).per_page(3)
+    @search = Type.search(params[:q])
+   
+    if params[:q].present?
+      # result return array, so get first elemen
+      @adss = @search.result[0].advertisements.published
+    else
+      @adss = Advertisement.published
+    end
   end
 
 end

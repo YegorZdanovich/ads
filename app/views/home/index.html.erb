@@ -2,14 +2,12 @@
   <%= link_to "New ads", new_advertisement_path, :class => "btn btn-primary" %>
 <% end %>
 
+<%= search_form_for @search, url: root_path do |f| %>
+  <%= f.label :type %>
+  <%= f.select :value_eq, Type.all.pluck(:value)%>
+  <%= f.submit :class => "btn"%>  
+<% end %>
+
 <%= render partial: "ads", collection: @adss%>
 
-<%= form_for @adss do |f| %>
-  
-<% end %>
 
-<% unless @adss.total_pages == 1%>
-  <div class="apple_pagination">
-    <%= will_paginate @adss %>
-  </div>
-<% end %>
