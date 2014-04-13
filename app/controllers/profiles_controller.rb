@@ -15,6 +15,13 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(id: params[:id])
     if @profile.update(params_for_update_profile)
 
+      # update user's role from profile update form
+      @user = @profile.user
+      if params[:User].present? 
+        @user.role = params[:User][:role]
+        @user.save
+      end
+
       flash[:notice] = "Everything is update"
       redirect_to @profile
     else
@@ -41,10 +48,7 @@ class ProfilesController < ApplicationController
   end
 
   def params_for_update_profile
-    params.require(:profile).permit(:first_name, :second_name, :age, :role)
+    params.require(:profile).permit(:first_name, :second_name, :age)
   end
 
-  def update_user_role
-    params.require(:profile).permit(:role)
-  end
 end
