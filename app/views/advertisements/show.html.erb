@@ -25,9 +25,9 @@
       <%= f.submit "Update Status", :class => "btn btn-primary"%>
     <% end %>
     
-    <!-- user can update only 'draft' ads-->
+    <!-- user can update only 'draft' or 'archival' ads-->
     <% if (current_user.role.user?) && (can? :update, @ads) %>
-      <%= f. select(:status, ["draft", "new"]) %>
+      <%= f. select(:status, @ads.status_transitions.map(&:to)+[@ads.status]) %>
       <%= f.submit "Update", :class => "btn btn-primary"%>
     <% end %>
 
