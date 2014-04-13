@@ -4,6 +4,9 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :first_name, presence: true
+  validates :first_name, :second_name, length: { in: 1..100}
+  validates :age, numericality: {only_integer: true}, inclusion: { in: 10..100}
 
   private
 

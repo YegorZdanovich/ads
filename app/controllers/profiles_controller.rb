@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
       flash[:notice] = "Everything is update"
       redirect_to @profile
     else
-      flash[:error] = "Bad news.. something goes wrong =("
+      flash[:error] = @profile.errors.full_messages.to_sentence
       redirect_to @profile
     end
   end
@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
 
   def is_users_profile?
     if cannot? :read, Profile.find_by(id: params[:id])
-      flash[:error] = "it's private profile!"
+      flash[:error] = "it was private profile!"
       redirect_to profile_path(current_user.profile)
     end
   end

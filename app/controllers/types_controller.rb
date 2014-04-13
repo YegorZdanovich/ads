@@ -7,18 +7,22 @@ class TypesController < ApplicationController
   end
 
   def create
-    if @type = Type.create(params_for_create)
+    @type = Type.create(params_for_create)
+    if @type.save
       flash[:notice] = "New Type was created!"
     else
-      flash[:error] = "Error in creating new type"
+      flash[:error] = @type.errors.full_messages.to_sentence
     end
     redirect_to types_path
   end
 
   def destroy
     @type = Type.find(params[:id])
-    @type.destroy
-    flash[:error] = "Type was deleted."
+    if @type.destroy
+      flash[:notice] = "Type was deleted."
+    else
+      flash[:error] = @type.errors.full_messages.to_sentence
+    end
     redirect_to types_path
   end
 

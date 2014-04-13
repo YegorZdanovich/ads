@@ -11,13 +11,14 @@ class AdvertisementsController < ApplicationController
 
   def create
     @user = current_user
-    if @ads = @user.advertisements.create(params_for_create) 
+    @ads = @user.advertisements.create(params_for_create)
+    if @ads.save
       Type.find_by(value: param_for_type).advertisements << @ads
       flash[:notice] = "New Advertisement was creat"
       redirect_to @ads
     else
-      flash[:error] = "We can't crerate new ads.. sorry :("
-      redirect_to root_path
+      flash[:error] = @ads.errors.full_messages.to_sentence
+      redirect_to new_advertisement_path
     end
   end
 
@@ -33,7 +34,7 @@ class AdvertisementsController < ApplicationController
       flash[:notice] = "Everything is update"
       redirect_to @ads
     else
-      flash[:error] = "Bad news.. something goes wrong =("
+      flash[:error] = @ads.errors.full_messages.to_sentence
       redirect_to @ads
     end
   end
