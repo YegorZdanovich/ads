@@ -18,15 +18,15 @@ class Ability
         p.user_id == user.id
       end
 
-      can [:read, :create], [Advertisement]
-      
+      can :create, [Advertisement]
+      can :read, [Advertisement] {|a| a.published? || (a.user.id == user.id)}
       can [:update, :destroy], [Advertisement] do |a| 
         a.user_id == user.id && ( a.draft? || a.archival?)
       end
       #can [:read, :create, :update], [Advertisement, Profile]
 
     elsif user.role.guest?
-      can :read, [Advertisement]
+      can :read, [Advertisement] {|a| a.published?}
     end
           
 

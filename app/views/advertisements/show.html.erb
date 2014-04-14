@@ -20,13 +20,13 @@
     <%= link_to "go home", root_path, :class => "btn" %>
 
     <!-- admin can update only 'new' ads-->
-    <% if (current_user.role.admin?) && (can? :update, @ads) %>
+    <% if (can? :update, @ads) && (current_user.role.admin?) %>
       <%= f. select(:status,["canceled","approved"]) %>
       <%= f.submit "Update Status", :class => "btn btn-primary"%>
     <% end %>
     
     <!-- user can update only 'draft' or 'archival' ads-->
-    <% if (current_user.role.user?) && (can? :update, @ads) %>
+    <% if (can? :update, @ads) && (current_user.role.user?) %>
       <%= f. select(:status, @ads.status_transitions.map(&:to)+[@ads.status]) %>
       <%= f.submit "Update", :class => "btn btn-primary"%>
     <% end %>

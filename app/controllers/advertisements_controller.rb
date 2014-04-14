@@ -3,7 +3,7 @@ class AdvertisementsController < ApplicationController
 
   before_action :can_create?, only: [:new, :create]
   before_action :authenticate_user!, except: [:show]
-
+  before_action :can_read?, only: [:show]
 
   def new
     @ads = Advertisement.new
@@ -59,6 +59,13 @@ class AdvertisementsController < ApplicationController
   def can_create?
     if cannot? :create, Advertisement
       flash[:error] = "Sorry bro, but you can't create new ads.."
+      redirect_to root_path
+    end
+  end
+
+  def can_read?
+    if cannot? :read, Advertisement.find_by(id: params[:id])
+      flash[:error] = "Sorry  but you can't read this ads.."
       redirect_to root_path
     end
   end

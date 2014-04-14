@@ -1,6 +1,7 @@
 </br>
 
 <div class="ads">
+  <p class="ads-title"><b>Type: </b><%= ads.type.value%></p>
   <p class="ads-title"><b>Title: </b><%= ads.title%></p>
   <p><b>Text: </b> <%= text_area :ads, :text, value: "#{ads.text}", :class => "ads-text"%> </p>
   <p class="ads-contact"><b>Contact: </b> <%= ads.contact%></p>

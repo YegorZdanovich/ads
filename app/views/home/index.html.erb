@@ -10,4 +10,8 @@
 
 <%= render partial: "ads", collection: @adss%>
 
-
+<% unless @adss.total_pages == 1%>
+  <div class="apple_pagination">
+    <%= will_paginate @adss %>
+  </div>
+<% end %>
