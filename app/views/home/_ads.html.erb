@@ -7,7 +7,7 @@
   <p class="ads-contact"><b>Contact: </b> <%= ads.contact%></p>
   
   <div class="form-actions">
-    <% if can? :read, Advertisement %>
+    <% if can? :read, ads %>
       <%= link_to "About", advertisement_path(ads), :class =>"btn"%>
     <% end %>
   </div>

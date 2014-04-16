@@ -4,8 +4,8 @@ Ads::Application.routes.draw do
    
   devise_for :users
   
-  resources :profiles
-  resources :advertisements
+  resources :profiles, except: [:index]
+  resources :advertisements, except: [:edit, :index]
 
   get "admin/users", to: "admins#users"
   get "admin/all_ads", to: "admins#all_ads"
