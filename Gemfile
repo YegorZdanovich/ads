@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem "twitter-bootstrap-rails"
 gem 'devise'
-gem 'cancan'
+gem 'cancancan', '~> 1.7'
 gem 'enumerize'
 gem 'will_paginate', '~> 3.0'
 gem 'state_machine'
