@@ -58,10 +58,25 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    elasticsearch (1.0.1)
+      elasticsearch-api (= 1.0.1)
+      elasticsearch-transport (= 1.0.1)
+    elasticsearch-api (1.0.1)
+      multi_json
+    elasticsearch-model (0.1.1)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-transport (1.0.1)
+      faraday
+      multi_json
     enumerize (0.8.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    hashie (2.1.1)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -77,6 +92,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    multipart-post (2.0.0)
     nested_form (0.3.2)
     orm_adapter (0.5.0)
     polyamorous (1.0.0)
@@ -170,6 +186,7 @@ DEPENDENCIES
   cancancan (~> 1.7)
   coffee-rails (~> 4.0.0)
   devise
+  elasticsearch-model
   enumerize
   jbuilder (~> 1.2)
   jquery-rails

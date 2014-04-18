@@ -2,10 +2,17 @@
   <%= link_to "New ads", new_advertisement_path, :class => "btn btn-primary" %>
 <% end %>
 
+<%= form_tag root_path, method: :get, :class => "form-search" do %>
+  <div class="input-append">
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil, :class => "btn" %>
+  </div>
+<% end %>
+
 <%= search_form_for @search, url: root_path do |f| %>
   <%= f.label :type %>
   <%= f.select :value_eq, Type.all.pluck(:value)%>
-  <%= f.submit :class => "btn"%>  
+  <%= f.submit "Filter", :class => "btn"%>  
 <% end %>
 
 <%= render partial: "ads", collection: @adss%>

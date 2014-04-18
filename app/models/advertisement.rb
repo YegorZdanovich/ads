@@ -1,5 +1,8 @@
 class Advertisement < ActiveRecord::Base
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   belongs_to :user
   belongs_to :type
   has_many :images, dependent: :destroy
