@@ -11,6 +11,7 @@ gem 'whenever', :require => false
 gem "nested_form"
 gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
 gem "ransack"
+gem 'responders'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

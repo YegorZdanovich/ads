@@ -9,21 +9,21 @@ class TypesController < ApplicationController
   def create
     @type = Type.create(params_for_create)
     if @type.save
-      flash[:notice] = "New Type was created!"
+      respond_with types_path, :location => types_path
     else
       flash[:error] = @type.errors.full_messages.to_sentence
+      redirect_to types_path
     end
-    redirect_to types_path
   end
 
   def destroy
     @type = Type.find(params[:id])
     if @type.destroy
-      flash[:notice] = "Type was deleted."
+      respond_with types_path, :location => types_path
     else
       flash[:error] = @type.errors.full_messages.to_sentence
+      redirect_to types_path
     end
-    redirect_to types_path
   end
 
   private
@@ -34,7 +34,7 @@ class TypesController < ApplicationController
 
   def check_ability
     if cannot? :browse, Advertisement
-      flash[:error] = "Permission denied"
+      flash[:error] = t 'type.read.cannot'
       redirect_to root_path
     end
   end

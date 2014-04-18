@@ -22,8 +22,7 @@ class ProfilesController < ApplicationController
         @user.save
       end
 
-      flash[:notice] = "Everything is update"
-      redirect_to @profile
+      respond_with @profile
     else
       flash[:error] = @profile.errors.full_messages.to_sentence
       redirect_to @profile
@@ -34,15 +33,14 @@ class ProfilesController < ApplicationController
     #delete user by deleting profile
     @user = User.find(Profile.find(params[:id]).user_id)
     @user.destroy    
-    flash[:error] = "User was deleted."
-    redirect_to root_path
+    respond_with current_user.profile
   end
 
   private
 
   def is_users_profile?
     if cannot? :read, Profile.find_by(id: params[:id])
-      flash[:error] = "it was private profile!"
+      flash[:error] = t 'profile.read.cannot'
       redirect_to profile_path(current_user.profile)
     end
   end

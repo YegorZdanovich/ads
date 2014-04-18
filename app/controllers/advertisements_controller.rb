@@ -5,6 +5,8 @@ class AdvertisementsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :can_read?, only: [:show]
 
+
+
   def new
     @ads = Advertisement.new
   end
@@ -14,8 +16,7 @@ class AdvertisementsController < ApplicationController
     @ads = @user.advertisements.create(params_for_create)
     if @ads.save
       Type.find_by(value: param_for_type).advertisements << @ads
-      flash[:notice] = "New Advertisement was creat"
-      redirect_to @ads
+      respond_with @ads
     else
       flash[:error] = @ads.errors.full_messages.to_sentence
       redirect_to new_advertisement_path
@@ -31,8 +32,7 @@ class AdvertisementsController < ApplicationController
     
     param = choose_param
     if @ads.update(param)
-      flash[:notice] = "Everything is update"
-      redirect_to @ads
+      respond_with @ads
     else
       flash[:error] = @ads.errors.full_messages.to_sentence
       redirect_to @ads
@@ -42,8 +42,7 @@ class AdvertisementsController < ApplicationController
   def destroy
     @ads = Advertisement.find(params[:id])
     @ads.destroy
-    flash[:error] = "Advertisement was deleted."
-    redirect_to root_path
+    respond_with current_user.profile
   end
 
   private
@@ -58,20 +57,20 @@ class AdvertisementsController < ApplicationController
 
   def can_create?
     if cannot? :create, Advertisement
-      flash[:error] = "Sorry bro, but you can't create new ads.."
+      flash[:error] = t 'ads.create.cannot'
       redirect_to root_path
     end
   end
 
   def can_read?
     if cannot? :read, Advertisement.find_by(id: params[:id])
-      flash[:error] = "Sorry  but you can't read this ads.."
+      flash[:error] = t 'ads.read.cannot'
       redirect_to root_path
     end
   end
 
   def choose_param
-    if params[:commit] == "Update"
+    if params[:commit] == (t 'update')
       params_for_update_ads
     else
       params_for_update_status

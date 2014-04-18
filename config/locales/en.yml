@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  update: "Update"
+  ads:
+    create:
+      cannot: "Sorry bro, but you can't create new ads.."
+    read:
+      cannot: "Sorry, but you can't read this ads.."
+  profile:
+    read:
+      cannot: "It was private profile!"
+  type:
+    read:
+      cannot: "Permission denied"

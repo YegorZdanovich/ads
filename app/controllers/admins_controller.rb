@@ -18,7 +18,7 @@ class AdminsController < ApplicationController
 
   def check_ability
     if cannot? :browse, Advertisement
-      flash[:error] = "Permission denied"
+      flash[:error] = t 'type.read.cannot'
       redirect_to root_path
     end
   end
