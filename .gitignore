@@ -17,3 +17,6 @@
 
 #Ignore images from paperclip
 /public/system
+
+#Ignore configs
+/config/*.yml
