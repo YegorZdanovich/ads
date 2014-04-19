@@ -10,15 +10,15 @@ class AdminsController < ApplicationController
      @adss = Advertisement.without_draft.time_post_order.page(params[:page]).per_page(20)
   end
 
-  def types
-    @types = Type.all
+  def categories
+    @categories = Category.all
   end
 
   private
 
   def check_ability
     if cannot? :browse, Advertisement
-      flash[:error] = t 'type.read.cannot'
+      flash[:error] = t 'category.read.cannot'
       redirect_to root_path
     end
   end

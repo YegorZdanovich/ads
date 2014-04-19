@@ -1,7 +1,6 @@
 <%= form_for Category.new  , html: {:class => "form-horizontal"} do |f| %>
   
   <div class="control-group">
-    
     <%= f.label "Category Name " , :class => "control-label"%>
     <div class="controls">
       <%= f.text_field :value %>
@@ -12,14 +11,8 @@
       <%= f.submit :class => "btn btn-primary" %>
       <%= link_to "Home", root_path, :class => "btn" %>
     </div>
-
-    <%= f.label "All categories " , :class => "control-label"%>
-    <div class="controls">
-      <%= f.select :value, Category.all.map(&:value) %>
-    </div>
-    <br/>
-
-
   <div>
 
 <% end %>
+
+<%= render partial: "category", collection: Category.all %>

@@ -15,7 +15,7 @@ class AdvertisementsController < ApplicationController
     @user = current_user
     @ads = @user.advertisements.create(params_for_create)
     if @ads.save
-      Type.find_by(value: param_for_type).advertisements << @ads
+      Category.find_by(value: param_for_category).advertisements << @ads
       respond_with @ads
     else
       flash[:error] = @ads.errors.full_messages.to_sentence
@@ -42,17 +42,17 @@ class AdvertisementsController < ApplicationController
   def destroy
     @ads = Advertisement.find(params[:id])
     @ads.destroy
-    respond_with current_user.profile
+    respond_with @ads, :location => current_user.profile
   end
 
   private
 
   def params_for_create
-    params.require(:advertisement).permit(:title, :text, :contact, images_attributes: [:picture])
+    params.require(:advertisement).permit(:title, :text, :contact, :type, images_attributes: [:picture])
   end
 
-  def param_for_type
-    params.require(:advertisement).permit(:type)[:type]
+  def param_for_category
+    params.require(:advertisement).permit(:category)[:category]
   end
 
   def can_create?

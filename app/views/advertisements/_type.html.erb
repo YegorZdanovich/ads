@@ -1,6 +1,7 @@
 <div class="control-group">
   <%= f.label "Type", :class => "control-label" %>
   <div class="controls">
-    <%= f.select(:type, Type.all.pluck(:value)) %>
+    <%= f.text_field :type, :class => "text_field" %>
+    <%= f.label "You can use 'buy', 'sale' and 'exchange' type" %>
   </div>
 </div>

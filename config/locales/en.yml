@@ -29,6 +29,6 @@ en:
   profile:
     read:
       cannot: "It was private profile!"
-  type:
+  category:
     read:
       cannot: "Permission denied"

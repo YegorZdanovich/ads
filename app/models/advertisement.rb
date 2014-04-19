@@ -2,13 +2,19 @@ class Advertisement < ActiveRecord::Base
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-
+  
+  # because doesn't recogmize column type 
+  self.inheritance_column = nil
+ 
   belongs_to :user
-  belongs_to :type
+  belongs_to :category
   has_many :images, dependent: :destroy
 
-  accepts_nested_attributes_for :images, allow_destroy: true
+  extend Enumerize
+  enumerize :type, in: [:buy, :sale, :exchange], default: :buy
 
+
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   validates :title, presence: true, length: { in: 3..25 } 
   validates :text, length: { maximum: 300 }

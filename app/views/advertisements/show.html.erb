@@ -2,12 +2,13 @@
   
 
   <div class="control-group">
-    <%= f.label "Type", :class => "control-label" %>
+    <%= f.label "Category", :class => "control-label" %>
     <div class="controls">
-      <%= f.label @ads.type.value %>
+      <%= f.label @ads.category.value %>
     </div>
   </div>
   
+  <%= render partial: "type", locals: {f: f} %>
   <%= render partial: "title_form", locals: {f: f} %>
   <%= render partial: "text_form", locals: {f: f} %>
   <%= render partial: "contact_form", locals: {f: f} %>

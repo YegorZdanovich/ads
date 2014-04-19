@@ -1,0 +1,6 @@
+<p>
+  <b>Category: </b>
+  <%= category.value %> 
+  <%= link_to "delee", category_path(category), method: :delete, 
+                date: {confirm: "Are you sure"} %>
+</p>

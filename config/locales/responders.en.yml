@@ -11,8 +11,8 @@ en:
         notice: '%{resource_name} was successfully destroyed.'
         alert: '%{resource_name} could not be destroyed.'
   flash:
-    types:
+    categories:
       create:
-        notice: 'New Type was successfully created.'
+        notice: 'New Category was successfully created.'
       destroy:
-        notice: 'Type was successfully destroyed.' 
+        notice: 'Category was successfully destroyed.' 

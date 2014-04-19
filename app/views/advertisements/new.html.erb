@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= render partial: "category", locals: {f: f} %>
   <%= render partial: "type", locals: {f: f} %>
   <%= render partial: "title_form", locals: {f: f} %>
   <%= render partial: "text_form", locals: {f: f} %>

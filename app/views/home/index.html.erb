@@ -10,8 +10,8 @@
 <% end %>
 
 <%= search_form_for @search, url: root_path do |f| %>
-  <%= f.label :type %>
-  <%= f.select :value_eq, Type.all.pluck(:value)%>
+  <%= f.label :category %>
+  <%= f.select :value_eq, Category.all.pluck(:value)%>
   <%= f.submit "Filter", :class => "btn"%>  
 <% end %>
 

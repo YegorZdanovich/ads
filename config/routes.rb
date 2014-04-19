@@ -11,6 +11,6 @@ Ads::Application.routes.draw do
   get "admin/all_ads", to: "admins#all_ads"
 
   scope '/admin' do
-    resources :types, only: [:index, :create, :destroy]
+    resources :categories, only: [:index, :create, :destroy]
   end
 end

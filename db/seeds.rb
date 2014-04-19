@@ -3,12 +3,12 @@
 # add images in real time
 User.destroy_all
 Advertisement.destroy_all
-Type.destroy_all
+Category.destroy_all
 
-#create ads types
-types = ["want to buy smt", "want to sell smt", "apartments to let", "free consert"]
-types.count.times do|i|
-  Type.create value: types[i]
+#create ads categories
+categories = ["want to buy smt", "want to sell smt", "apartments to let", "free consert"]
+categories.count.times do|i|
+  Category.create value: categories[i]
 end
 
 #create admin
@@ -26,20 +26,22 @@ emails.count.times do |i|
 end
 
 #create advertisements
-# and make relationships between types
+# and make relationships between categories
 title = "It's title for "
 text = " is number of ads. This is test advertisement and it's not very long :)"
 contact = " 4 8 15 16 23 42. call me maybe"
+types = ["buy", "sale", "exchange"]
 ads_count = 50
 ads_count.times do |i|
   ads = Advertisement.create title: title + "#{i}" + "ads",
                              text: "#{i}" + text,
-                             contact: contact
+                             contact: contact,
+                             type: types[ i % 3]
 
-  type_count = Type.count
+  category_count = Category.count
   user_count = User.count
-  Type.all[i % type_count].advertisements << ads
-  User.all[(i+1) % type_count].advertisements << ads
+  Category.all[i % category_count].advertisements << ads
+  User.all[(i+1) % category_count].advertisements << ads
 end
 
 # some manipulation with ads status
