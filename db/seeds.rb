@@ -54,3 +54,5 @@ Advertisement.order("random()").limit(ads_count / 2).each do |ads|
     ads.cancel
   end
 end
+
+Advertisement.import
