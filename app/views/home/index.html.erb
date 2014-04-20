@@ -15,6 +15,12 @@
   <%= f.submit "Filter", :class => "btn"%>  
 <% end %>
 
+<div id = "facets">
+  <ul>
+    <%= render partial: "category", collection: Category.all%>
+  </ul>
+</div>
+
 <%= render partial: "ads", collection: @adss%>
 
 <% unless @adss.total_pages == 1%>

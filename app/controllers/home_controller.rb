@@ -7,18 +7,21 @@ class HomeController < ApplicationController
     if params[:q].present?
 
       # result return array, so get first elemen
-      @adss = @search.result[0].advertisements.published
+      @adss = @search.result[0].advertisements
     else
-      @adss = Advertisement.published
+      @adss = Advertisement.all
     end
 
     if params[:query].present?
-      params[:q] = nil
       @adss = Advertisement.search(params[:query])
-      @adss = @adss.records.published
+      @adss = @adss.records
     end
 
-    @adss = @adss.time_post_order.page(params[:page]).per_page(10)
+    if params[:facet].present?
+      @adss = Category.find_by(value: params[:facet]).advertisements
+    end
+
+    @adss = @adss.published.time_post_order.page(params[:page]).per_page(10)
   end
 
 end
