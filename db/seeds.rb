@@ -36,7 +36,8 @@ ads_count.times do |i|
   ads = Advertisement.create title: title + "#{i}" + "ads",
                              text: "#{i}" + text,
                              contact: contact,
-                             type: types[ i % 3]
+                             type: types[ i % 3],
+                             price: rand(10..200)
 
   category_count = Category.count
   user_count = User.count

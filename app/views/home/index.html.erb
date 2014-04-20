@@ -9,11 +9,7 @@
   </div>
 <% end %>
 
-<%= search_form_for @search, url: root_path do |f| %>
-  <%= f.label :category %>
-  <%= f.select :value_eq, Category.all.pluck(:value)%>
-  <%= f.submit "Filter", :class => "btn"%>  
-<% end %>
+
 
 <div id = "facets">
   <ul>
@@ -21,7 +17,11 @@
   </ul>
 </div>
 
+<%= sort_link(@search, :updated_at, "Sort by publication time")%>
+<%= sort_link(@search, :price, "Sort by price")%>
+
 <%= render partial: "ads", collection: @adss%>
+
 
 <% unless @adss.total_pages == 1%>
   <div class="apple_pagination">

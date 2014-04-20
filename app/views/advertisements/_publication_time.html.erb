@@ -1,0 +1,6 @@
+ <div class="control-group">
+  <%= f.label "Publication Time", :class => "control-label" %>
+  <div class="controls">
+    <%= f.label ads.updated_at.to_time.strftime("%d-%m-%Y"), :class => "text_field"%>
+  </div>
+</div> 

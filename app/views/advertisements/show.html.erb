@@ -11,10 +11,11 @@
   <%= render partial: "type", locals: {f: f} %>
   <%= render partial: "title_form", locals: {f: f} %>
   <%= render partial: "text_form", locals: {f: f} %>
+  <%= render partial: "price_form", locals: {f: f} %>
   <%= render partial: "contact_form", locals: {f: f} %>
   <%= render partial: "status_form", locals: {f: f} %>   
   <%= render partial: "image", collection: @ads.images %>
-  
+  <%= render partial: "publication_time", locals: {f: f, ads: @ads} %>
 
   <div class="form-actions">
 

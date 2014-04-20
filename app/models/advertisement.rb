@@ -20,7 +20,7 @@ class Advertisement < ActiveRecord::Base
   validates :text, length: { maximum: 300 }
   validates :contact, length: { maximum: 60 }
 
-  scope :time_post_order, -> { Advertisement.order("created_at DESC") }
+  scope :time_post_order, -> { Advertisement.order("updated_at DESC") }
   scope :draft, -> { Advertisement.with_status(:draft) }
   scope :new_ads, -> { Advertisement.with_status(:new) }
   scope :canceled, -> { Advertisement.with_status(:canceled) }

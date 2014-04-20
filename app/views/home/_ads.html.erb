@@ -5,7 +5,9 @@
   <p class="ads-title"><b>Type: </b><%= ads.type%></p>
   <p class="ads-title"><b>Title: </b><%= ads.title%></p>
   <p><b>Text: </b> <%= text_area :ads, :text, value: "#{ads.text}", :class => "ads-text"%> </p>
-  <p class="ads-contact"><b>Contact: </b> <%= ads.contact%></p>
+  <p class="ads-contact"><b>Price: </b> <%= ads.price%>$</p>
+  <p class="ads-contact"><b>Publication Time: </b> <%= ads.updated_at.to_time.strftime("%d-%m-%Y")%></p>
+  
   
   <div class="form-actions">
     <% if can? :read, ads %>

@@ -5,9 +5,8 @@ class HomeController < ApplicationController
     @search = Category.search(params[:q])
      
     if params[:q].present?
-
-      # result return array, so get first elemen
-      @adss = @search.result[0].advertisements
+      params[:facet] = nil
+      @adss = Advertisement.order(params[:q][:s])
     else
       @adss = Advertisement.all
     end
