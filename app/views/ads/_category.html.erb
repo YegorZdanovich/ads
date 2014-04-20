@@ -1,0 +1,8 @@
+<li>
+  <%= link_to_unless_current category.value, root_path(facet: category.value) %>
+  <% if params[:facet] == category.value %>
+    <%= link_to "remove", :facet => nil %>
+  <% else %>
+    (<%= category.advertisements.published.count %>)
+  <% end %> 
+</li>

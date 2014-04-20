@@ -1,6 +1,6 @@
 Ads::Application.routes.draw do
 
-  root "home#index"
+  root "ads#index"
    
   devise_for :users
   
