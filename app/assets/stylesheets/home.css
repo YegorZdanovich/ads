@@ -18,6 +18,16 @@
   height: 20px;
 }
 
+.ads-price {
+  width: 600px;
+  height: 20px;
+}
+
+.ads-time {
+  width: 600px;
+  height: 20px;
+}
+
 #facets {
   border: solid 3px #40558F;
   background-color: #B1CAE6;

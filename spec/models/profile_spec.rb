@@ -5,14 +5,17 @@ describe Profile do
   it 'belongs to user' do
     user = User.create email: "yegor@gmail.com",
                         password: "123123123"
-    Profile.first.user_id.should == user.id
+
+
+    Profile.last.user_id.should == user.id
   end
 
   it 'should delet user when delet Profile' do
+    before_count = Profile.count
     user = User.create email: "yegor@gmail.com",
                        password: "123123123"
 
-    User.first.destroy
-    expect(Profile).to have(:no).records
+    User.last.destroy
+    expect(Profile).to have(before_count).records
   end
 end

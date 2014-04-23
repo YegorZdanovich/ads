@@ -28,10 +28,10 @@ describe Advertisement do
     expect(@ads).to have(1).errors_on(:contact)
   end
 
-  it 'should have type' do
-    type = Type.create! value: "type test"
-    type.advertisements << subject
-    subject.type.value.should == type.value
+  it 'should have category' do
+    category = Category.create! value: "category test"
+    category.advertisements << subject
+    subject.category.value.should == category.value
   end
 
 end
