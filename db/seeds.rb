@@ -31,7 +31,7 @@ title = "It's title for "
 text = " is number of ads. This is test advertisement and it's not very long :)"
 contact = " 4 8 15 16 23 42. call me maybe"
 types = ["buy", "sale", "exchange"]
-ads_count = 50
+ads_count = 30
 ads_count.times do |i|
   ads = Advertisement.create title: title + "#{i}" + "ads",
                              text: "#{i}" + text,
@@ -51,10 +51,12 @@ Advertisement.order("random()").limit(ads_count / 2).each do |ads|
   #change to new
   ads.create
 
-  if ads.id.even?
-    ads.approve
-  else
-    ads.cancel
+  unless ads.id % 3 == 0
+    if ads.id.even?
+      ads.approve
+    else
+      ads.cancel
+    end
   end
 end
 
