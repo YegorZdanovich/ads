@@ -3,7 +3,15 @@ class AdsController < ApplicationController
   def index
 
     @search = Category.search(params[:q])
-    @category = Category.includes(:advertisements)
+
+    names = Category.pluck(:value)
+
+    #return not empty categories with their advertisements count
+    array = Advertisement.published.joins(:category).group("value").select("value, COUNT(*) as num").map{|c| [c.value, c.num] }
+    @category = Hash[array]
+
+    # set to '0' empty categories
+    names.each{|name| @category[name] ||= 0}
 
     if params[:q].present?
       params[:facet] = nil

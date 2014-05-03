@@ -9,10 +9,9 @@
   </div>
 <% end %>
 
-
 <div id = "facets">
   <ul>
-    <%= render partial: "category", collection: @category%>
+    <%= render partial: "category", collection: @category.to_a %>
   </ul>
 </div>
 
