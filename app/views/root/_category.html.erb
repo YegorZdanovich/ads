@@ -1,0 +1,9 @@
+<!-- category: 0- name, 1 - count-->
+<li>
+  <%= link_to_unless_current category[0], root_path(facet: category[0]), :class => "category-list" %>
+  <% if params[:facet] == category[0] %>
+    <%= link_to "remove", :facet => nil %>
+  <% else %>
+    (<%= category[1] %>)
+  <% end %>
+</li>

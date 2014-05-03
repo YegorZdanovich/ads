@@ -1,11 +1,11 @@
 Ads::Application.routes.draw do
 
-  root "ads#index"
-   
+  root "advertisements#index"
+
   devise_for :users
-  
+
   resources :profiles, except: [:index]
-  resources :advertisements, except: [:edit, :index]
+  resources :advertisements, except: [:edit]
 
   get "admin/users", to: "admins#users"
   get "admin/all_ads", to: "admins#all_ads"
