@@ -1,5 +1,3 @@
 test task to twinslash job
 
-run rake db:seed, rake status:publish 
-
-and run rake db:seed RAILS_ENV=test , rake status:publish for starting tests
+run rake db:seed, rake status:publish

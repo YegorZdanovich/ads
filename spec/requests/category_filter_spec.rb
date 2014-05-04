@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe 'Category' do
-  
+
+  before(:all) do
+    fill_ads_and_category_tables
+  end
+
+  after(:all) do
+    clear_db(:advertisement, :category)
+  end
+
   it 'should have same count of ads' do
     visit root_path
     category =  first('.category-list').text

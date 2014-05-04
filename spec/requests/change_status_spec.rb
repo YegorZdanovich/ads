@@ -1,21 +1,36 @@
 require 'spec_helper'
 
 describe "Advertisement's status." do
-  
 
-  category = Category.find_by(value: "test") || Category.create!(value: "test")
-  let(:user) { FactoryGirl.build(:user)} 
-  let(:admin) { FactoryGirl.build(:admin)} 
+  before(:all) do
+
+    @ads = Advertisement.create! title: "test_titlesfdjhf",
+                                 text: "test text qweqwe",
+                                 contact: "123322 +"
+    @category = Category.create! value: "test category1"
+    @category.advertisements << @ads
+
+    @user = User.create! email: "user1@gmail.com",
+                            password: "user112345"
+    @user.advertisements << @ads
+
+    @admin = User.create! email: "admin@gmail.com",
+                             password: "admin112345"
+
+    @admin.role = "admin"
+    @admin.save!
+  end
+
+  after(:all) do
+    clear_db(:user, :advertisement, :category)
+  end
 
   describe 'User' do
-    before do
-      sign_in(email: user.email, password: user.password)
-      visit root_path
-      click_link user.email
-      click_link User.find_by(email: user.email).advertisements.draft.first.title
-    end
-
     it 'can change ads status to new' do
+      sign_in(email: @user.email, password: @user.password)
+      visit root_path
+      click_link @user.email
+      click_link @user.advertisements.draft.first.title
       select "new", from: 'advertisement[status]'
       click_button "Update"
       page.should have_content "Advertisement was successfully updated."
@@ -25,11 +40,15 @@ describe "Advertisement's status." do
 
   describe 'Admin' do
 
+    before(:all) do
+      @ads.status = "new"
+      @ads.save!
+    end
+
     before(:each) do
-      sign_in(email: admin.email, password: admin.password)
-      # save_and_open_page      
+      sign_in(email: @admin.email, password: @admin.password)
       visit admin_all_ads_path
-      click_link Advertisement.new_ads.first.title
+      click_link @ads.title
     end
 
     it 'can change ads status to canceld' do
