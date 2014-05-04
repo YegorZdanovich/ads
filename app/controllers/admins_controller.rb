@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
 
-  before_action :check_ability
+  before_action :check_admin_ability
 
   def users
     @users = User.all.page(params[:page]).per_page(10)
@@ -12,15 +12,6 @@ class AdminsController < ApplicationController
 
   def categories
     @categories = Category.all
-  end
-
-  private
-
-  def check_ability
-    if cannot? :browse, Advertisement
-      flash[:error] = t 'category.read.cannot'
-      redirect_to root_path
-    end
   end
 
 end

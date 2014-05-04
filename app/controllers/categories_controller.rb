@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-  before_action :check_ability
+  before_action :check_admin_ability
 
   def index
     @category = Category.all
@@ -30,13 +30,6 @@ class CategoriesController < ApplicationController
 
   def params_for_create
     params.require(:category).permit(:value)
-  end
-
-  def check_ability
-    if cannot? :browse, Advertisement
-      flash[:error] = t 'category.read.cannot'
-      redirect_to root_path
-    end
   end
 
 end

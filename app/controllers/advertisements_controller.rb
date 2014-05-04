@@ -2,9 +2,8 @@ class AdvertisementsController < ApplicationController
 
 
   before_action :can_create?, only: [:new, :create]
-  before_action :authenticate_user!, except: [:show]
-  before_action :can_read?, only: [:show]
 
+  load_and_authorize_resource except: [:new, :create]
 
   def index
     @search = Category.search(params[:q])
@@ -89,13 +88,6 @@ class AdvertisementsController < ApplicationController
   def can_create?
     if cannot? :create, Advertisement
       flash[:error] = t 'ads.create.cannot'
-      redirect_to root_path
-    end
-  end
-
-  def can_read?
-    if cannot? :read, Advertisement.find_by(id: params[:id])
-      flash[:error] = t 'ads.read.cannot'
       redirect_to root_path
     end
   end
