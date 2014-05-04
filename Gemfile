@@ -13,6 +13,8 @@ gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
 gem "ransack"
 gem 'responders'
 gem 'elasticsearch-model'
+gem "elasticsearch", git: "git://github.com/elasticsearch/elasticsearch-ruby.git"
+gem "elasticsearch-rails", git: "git://github.com/elasticsearch/elasticsearch-rails.git"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

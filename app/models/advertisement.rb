@@ -2,10 +2,10 @@ class Advertisement < ActiveRecord::Base
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  
-  # because doesn't recogmize column type 
+
+  # because doesn't recogmize column type
   self.inheritance_column = nil
- 
+
   belongs_to :user
   belongs_to :category
   has_many :images, dependent: :destroy
@@ -16,7 +16,7 @@ class Advertisement < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :title, presence: true, length: { in: 3..25 } 
+  validates :title, presence: true, length: { in: 3..25 }
   validates :text, length: { maximum: 300 }
   validates :contact, length: { maximum: 60 }
 
@@ -30,7 +30,7 @@ class Advertisement < ActiveRecord::Base
   scope :without_draft, -> { where.not(status: :draft)}
 
   state_machine :status, :initial => :draft do
-    
+
     event :create do
       transition :draft => :new
     end

@@ -25,7 +25,7 @@ class AdvertisementsController < ApplicationController
     end
 
     if params[:query].present?
-      @adss = Advertisement.search(params[:query])
+      @adss = Advertisement.__elasticsearch__.search(params[:query])
       @adss = @adss.records
     end
 

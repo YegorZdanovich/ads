@@ -1,4 +1,23 @@
 GIT
+  remote: git://github.com/elasticsearch/elasticsearch-rails.git
+  revision: 6516521844c238f9517c3200097976eaeb7043d2
+  specs:
+    elasticsearch-rails (0.1.1)
+
+GIT
+  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
+  revision: c6a3782d4ed2a3ef97e97e4f2abcaa79a0da4d38
+  specs:
+    elasticsearch (1.0.1)
+      elasticsearch-api (= 1.0.1)
+      elasticsearch-transport (= 1.0.1)
+    elasticsearch-api (1.0.1)
+      multi_json
+    elasticsearch-transport (1.0.1)
+      faraday
+      multi_json
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 41da3a3c4c139964a9877c77220f94200d73c87a
   specs:
@@ -64,18 +83,10 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    elasticsearch (1.0.1)
-      elasticsearch-api (= 1.0.1)
-      elasticsearch-transport (= 1.0.1)
-    elasticsearch-api (1.0.1)
-      multi_json
-    elasticsearch-model (0.1.1)
+    elasticsearch-model (0.1.0)
       activesupport (> 3)
       elasticsearch (> 0.4)
       hashie
-    elasticsearch-transport (1.0.1)
-      faraday
-      multi_json
     enumerize (0.8.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
@@ -203,7 +214,9 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   devise
+  elasticsearch!
   elasticsearch-model
+  elasticsearch-rails!
   enumerize
   factory_girl_rails
   jbuilder (~> 1.2)
