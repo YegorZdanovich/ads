@@ -15,6 +15,7 @@ gem 'responders'
 gem 'elasticsearch-model'
 gem "elasticsearch", git: "git://github.com/elasticsearch/elasticsearch-ruby.git"
 gem "elasticsearch-rails", git: "git://github.com/elasticsearch/elasticsearch-rails.git"
+gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

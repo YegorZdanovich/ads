@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    
+
     user ||= User.new
 
     if user.role.admin?
@@ -13,14 +13,16 @@ class Ability
       can :destroy, [Advertisement]
       can :browse, [Advertisement, Profile]
     elsif user.role.user?
-      
-      can :read, Profile do |p|
+
+      can [:read, :update, :edit], Profile do |p|
         p.user_id == user.id
       end
 
+      cannot :update_status, Profile
+
       can :create, [Advertisement]
       can :read, [Advertisement] {|a| a.published? || (a.user.id == user.id)}
-      can [:update, :destroy], [Advertisement] do |a| 
+      can [:update, :destroy], [Advertisement] do |a|
         a.user_id == user.id && ( a.draft? || a.archival?)
       end
       #can [:read, :create, :update], [Advertisement, Profile]
@@ -28,7 +30,7 @@ class Ability
     elsif user.role.guest?
       can :read, [Advertisement] {|a| a.published?}
     end
-          
+
 
     #   can :update, Article, :published => true
     #

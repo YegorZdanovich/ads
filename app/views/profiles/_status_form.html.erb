@@ -6,10 +6,10 @@
       <%= f.check_box @profile.user.role, checked: "checked", disabled: "true"%>
     <% else %>
 
-      <% if can? :update, @profile %>
-        <%= select( User, :role, User.role.options( except: [:guest]))%>
-      <% end %>
-    
+    <% if can? :update_status, @profile %>
+      <%= select( User, :role, User.role.options( except: [:guest]))%>
+    <% end %>
+
     <% end %>
   </div>
 <br>

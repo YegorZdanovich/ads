@@ -1,37 +1,32 @@
-<%= form_for @ads, :html => { :class => "form-horizontal"} do |f| %>
-  
+<%= simple_form_for @ads, :html => { :class => "form-horizontal"} do |f| %>
 
-  <div class="control-group">
-    <%= f.label "Category", :class => "control-label" %>
-    <div class="controls">
-      <%= f.label @ads.category.value %>
-    </div>
-  </div>
-  
+
+  <%= render partial: "category", locals: {f: f} %>
   <%= render partial: "type", locals: {f: f} %>
   <%= render partial: "title_form", locals: {f: f} %>
   <%= render partial: "text_form", locals: {f: f} %>
   <%= render partial: "price_form", locals: {f: f} %>
   <%= render partial: "contact_form", locals: {f: f} %>
-  <%= render partial: "status_form", locals: {f: f} %>   
+  <%= render partial: "status_form", locals: {f: f} %>
   <%= render partial: "image", collection: @ads.images %>
   <%= render partial: "publication_time", locals: {f: f, ads: @ads} %>
 
   <div class="form-actions">
 
-    <%= link_to "go home", root_path, :class => "btn" %>
 
     <!-- admin can update only 'new' ads-->
     <% if (can? :update, @ads) && (current_user.role.admin?) %>
-      <%= f. select(:status,["canceled","approved"]) %>
+      <%= f.input :status, collection: @ads.status_transitions.map(&:to), selected: :status %>
       <%= f.submit "Update Status", :class => "btn btn-primary"%>
     <% end %>
-    
+
     <!-- user can update only 'draft' or 'archival' ads-->
     <% if (can? :update, @ads) && (current_user.role.user?) %>
-      <%= f. select(:status, @ads.status_transitions.map(&:to)+[@ads.status]) %>
+      <%= f.input :status, collection: @ads.status_transitions.map(&:to)+[@ads.status], selected: :status %>
       <%= f.submit "Update", :class => "btn btn-primary"%>
     <% end %>
+
+    <%= link_to "go home", root_path, :class => "btn" %>
 
     <% if can? :destroy, @ads %>
       <%= link_to "Delete advertisement", advertisement_path(@ads), :class =>"btn btn-danger",

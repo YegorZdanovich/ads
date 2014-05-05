@@ -1,17 +1,11 @@
-<%= form_for Category.new  , html: {:class => "form-horizontal"} do |f| %>
-  
-  <div class="control-group">
-    <%= f.label "Category Name " , :class => "control-label"%>
-    <div class="controls">
-      <%= f.text_field :value %>
-    </div>
-    <br/>
-    
+<%= simple_form_for Category.new  , html: {:class => "form-horizontal"} do |f| %>
+
+    <%= f.input :value, label: "Category value" %>
+
     <div class="form-actions">
-      <%= f.submit :class => "btn btn-primary" %>
+      <%= f.button :submit, :class => "btn btn-primary" %>
       <%= link_to "Home", root_path, :class => "btn" %>
     </div>
-  <div>
 
 <% end %>
 

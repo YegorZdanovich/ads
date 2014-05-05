@@ -1,15 +1,4 @@
-<%= nested_form_for @ads, :html => { :class => "form-horizontal"} do |f| %>
-  
-  <% if @ads.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ads.errors.count, "error") %> prohibited this ads from being saved:</h2>
-        <ul>
-          <% @ads.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
+<%= simple_nested_form_for @ads, :html => { :class => "form-horizontal"} do |f| %>
 
   <%= render partial: "category", locals: {f: f} %>
   <%= render partial: "type", locals: {f: f} %>
@@ -18,6 +7,6 @@
   <%= render partial: "price_form", locals: {f: f} %>
   <%= render partial: "contact_form", locals: {f: f} %>
   <%= render partial: "add_picture", locals: {f: f} %>
-  <%= render partial: "new_form", locals: {f: f} %>   
+  <%= render partial: "new_form", locals: {f: f} %>
 
 <% end %>

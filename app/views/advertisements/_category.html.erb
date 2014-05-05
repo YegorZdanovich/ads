@@ -1,6 +1,1 @@
-<div class="control-group">
-  <%= f.label "Category", :class => "control-label" %>
-  <div class="controls">
-    <%= f.select(:category, Category.all.pluck(:value)) %>
-  </div>
-</div>
+<%= f.input :category, collection: Category.all.pluck(:value), selected: :category %>

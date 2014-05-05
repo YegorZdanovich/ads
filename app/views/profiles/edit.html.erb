@@ -1,7 +1,7 @@
-<%= form_for @profile, :html => {:class => "form-horizontal"} do |f| %>
-  
+<%= simple_form_for @profile, :html => {:class => "form-horizontal"} do |f| %>
+
   <div class="control-group">
-    
+
     <%= render partial: "first_name_form" , locals: { f: f } %>
     <%= render partial: "second_name_form" , locals: { f: f } %>
     <%= render partial: "age_form" , locals: { f: f } %>
@@ -11,7 +11,7 @@
 
   <div class="form-actions">
     <%= f.submit :class => "btn btn-primary" %>
-    <%= link_to "Back", root_path, :class => "btn" %>  
-  </div>  
-  
+    <%= link_to "Back", root_path, :class => "btn" %>
+  </div>
+
 <% end %>
